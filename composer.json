@@ -1,6 +1,6 @@
 {
-    "name": "avator/yii2-turbosms",
-    "description": "Yii2 turbosms",
+    "name": "Stern87/yii2-turbosms",
+    "description": "Yii2 TurboSMS",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","helpers","turbosms","sms"],
     "license": "BSD-3-Clause",
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "avator\\turbosms\\": ""
+            "stern87\\turbosms\\": ""
         }
     }
 }
