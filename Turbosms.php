@@ -1,6 +1,6 @@
 <?php
 
-namespace avator\turbosms;
+namespace stern87\turbosms;
 
 use Yii;
 use SoapClient;
@@ -8,12 +8,6 @@ use yii\base\InvalidConfigException;
 use yii\base\Component;
 use avator\turbosms\models\TurboSmsSent;
 
-/**
- *
- * @author AVATOR (Oleksii Golub) <sclub2018@yandex.ua>
- * @since 1.0
- *
- */
 class Turbosms extends Component
 {
 
@@ -37,6 +31,9 @@ class Turbosms extends Component
      */
     public $debug = false;
 
+    /**
+     * @var SoapClient
+     */
     protected $client;
 
     /**
@@ -47,37 +44,36 @@ class Turbosms extends Component
     /**
      * Send sms
      *
+     * @param $phone
      * @param $text
-     * @param $phones
      *
      * @throws InvalidConfigException
      */
-    public function send($text, $phones) {
+    public function send($phone, $text) {
 
         if (!$this->debug || !$this->client) {
             $this->connect();
         }
 
-        if (!is_array($phones)) {
-            $phones = [$phones];
-        }
-        foreach ($phones as $phone) {
+        if (!$this->debug) {
+            $result = $this->client->SendSMS([
+                'sender' => $this->sender,
+                'destination' => $phone,
+                'text' => $text
+            ]);
 
-            $message = 'Сообщения успешно отправлено';
-            if (!$this->debug) {
-                $result = $this->client->SendSMS([
-                    'sender' => $this->sender,
-                    'destination' => $phone,
-                    'text' => $text
-                ]);
-
-                if ($result->SendSMSResult->ResultArray[0] != 'Сообщения успешно отправлены') {
-                    $message = 'Сообщения не отправлено (ошибка: "' . $result->SendSMSResult->ResultArray[0] . '")';
-                }
+            if ($result->SendSMSResult->ResultArray[0] != 'Сообщения успешно отправлены') {
+                $message = $result->SendSMSResult->ResultArray[0];
             }
-
-            $this->saveToDb($text, $phone, $message);
+            $result = ($result->SendSMSResult->ResultArray[0] == 'Сообщения успешно отправлены');
+        } else {
+            $result = true;
+            $message = 'Сообщения успешно отправлено';
         }
+
+        $this->saveToDb($text, $phone, $message);
+        
+        return $result;
     }
 
     /**
