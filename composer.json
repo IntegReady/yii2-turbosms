@@ -1,5 +1,5 @@
 {
-    "name": "Stern87/yii2-turbosms",
+    "name": "stern87/yii2-turbosms",
     "description": "Yii2 TurboSMS",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","helpers","turbosms","sms"],
