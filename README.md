@@ -32,7 +32,7 @@ Add the following in your config:
 ```php
 <?php
 ...
-    'components' =>array(
+    'components' => [
         'turbosms' => [
             'class' => 'stern87\turbosms\Turbosms',
             'sender' => 'your_sender',
@@ -40,14 +40,14 @@ Add the following in your config:
             'password' => 'your_password',
         ],
         ...
-    ),
+    ],
 ...
 ```
 If you want test sms in debug mode change config:
 ```php
 <?php
 ...
-    'components'=>array(
+    'components' => [
         'turbosms' => [
             'class' => 'stern87\turbosms\Turbosms',
             'sender' => 'your_sender',
@@ -56,7 +56,7 @@ If you want test sms in debug mode change config:
             'debug' => true,
         ],
         ...
-    ),
+    ],
 ...
 ```
 in debug mode sms not send only add to db table.
