@@ -32,7 +32,7 @@ Add the following in your config:
 ```php
 <?php
 ...
-    'components'=>array(
+    'components' =>array(
         'turbosms' => [
             'class' => 'stern87\turbosms\Turbosms',
             'sender' => 'your_sender',
