@@ -42,6 +42,11 @@ class Turbosms extends Component
     protected $wsdl = 'http://turbosms.in.ua/api/wsdl.html';
 
     /**
+     * @var string
+     */
+    private $error;
+
+    /**
      * Send sms
      *
      * @param $phone
@@ -63,10 +68,8 @@ class Turbosms extends Component
                 'text' => $text
             ]);
 
-            if ($result->SendSMSResult->ResultArray[0] != 'Сообщения успешно отправлены') {
-                $message = $result->SendSMSResult->ResultArray[0];
-            }
-            $result = ($result->SendSMSResult->ResultArray[0] == 'Сообщения успешно отправлены');
+            $message = $this->error = $result->SendSMSResult->ResultArray;
+            $result = ($message == 'Сообщения успешно отправлены');
         } else {
             $result = true;
             $message = 'Сообщения успешно отправлено';
@@ -140,6 +143,15 @@ class Turbosms extends Component
     public function getMessageStatus($messageId) {
         $result = $this->client->GetMessageStatus(['MessageId' => $messageId]);
         return $result->GetMessageStatusResult;
+    }
+
+    /**
+     * Get last error
+     *
+     * @return string
+     */
+    public function getError() {
+        return $this->error;
     }
 
 }
