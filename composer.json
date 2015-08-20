@@ -10,6 +10,7 @@
             "email": "sclub2018@yandex.ua"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "yiisoft/yii2": "*"
     },
