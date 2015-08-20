@@ -46,7 +46,8 @@ class Turbosms extends Component
      *
      * @param $phone
      * @param $text
-     *
+     * @return boolean
+     * 
      * @throws InvalidConfigException
      */
     public function send($phone, $text) {
