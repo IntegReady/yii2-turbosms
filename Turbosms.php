@@ -6,7 +6,7 @@ use Yii;
 use SoapClient;
 use yii\base\InvalidConfigException;
 use yii\base\Component;
-use avator\turbosms\models\TurboSmsSent;
+use stern87\turbosms\models\TurboSmsSent;
 
 class Turbosms extends Component
 {
