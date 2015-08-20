@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist avator/yii2-turbosms "*"
+php composer.phar require --prefer-dist stern87/yii2-turbosms "*"
 ```
 
 or add
 
 ```
-"avator/yii2-turbosms": "*"
+"stern87/yii2-turbosms": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -34,7 +34,7 @@ Add the following in your config:
 ...
     'components'=>array(
         'turbosms' => [
-            'class' => 'avator\turbosms\Turbosms',
+            'class' => 'stern87\turbosms\Turbosms',
             'sender' => 'your_sender',
             'login' => 'your_login',
             'password' => 'your_password',
@@ -49,7 +49,7 @@ If you want test sms in debug mode change config:
 ...
     'components'=>array(
         'turbosms' => [
-            'class' => 'avator\turbosms\Turbosms',
+            'class' => 'stern87\turbosms\Turbosms',
             'sender' => 'your_sender',
             'login' => 'your_login',
             'password' => 'your_password',
