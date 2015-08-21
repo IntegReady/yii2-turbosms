@@ -13,7 +13,7 @@ class m141211_142603_create_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%turbo_sms_sent}}', [
+        $this->createTable('{{%turbosms_sent}}', [
             'id' => Schema::TYPE_PK,
             'date_sent' => Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT CURRENT_TIMESTAMP',
             'text' => Schema::TYPE_TEXT,
