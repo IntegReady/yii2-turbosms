@@ -20,7 +20,7 @@ class TurboSmsSent extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%turbo_sms_sent}}';
+        return '{{%turbosms_sent}}';
     }
 
     /**
@@ -31,7 +31,7 @@ class TurboSmsSent extends \yii\db\ActiveRecord
         return [
             [['date_sent'], 'safe'],
             [['text'], 'string'],
-            [['phone', 'status'], 'string', 'max' => 255]
+            [['phone', 'status'], 'string', 'max' => 16]
         ];
     }
 
