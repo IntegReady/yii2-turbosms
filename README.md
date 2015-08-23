@@ -35,6 +35,7 @@ Add the following in your config:
     'components' => [
         'turbosms' => [
             'class' => 'stern87\turbosms\Turbosms',
+            'viewPath' => '@app/sms',
             'sender' => 'your_sender',
             'login' => 'your_login',
             'password' => 'your_password',
@@ -50,6 +51,7 @@ If you want test sms in debug mode change config:
     'components' => [
         'turbosms' => [
             'class' => 'stern87\turbosms\Turbosms',
+            'viewPath' => '@app/sms',
             'sender' => 'your_sender',
             'login' => 'your_login',
             'password' => 'your_password',
@@ -64,10 +66,14 @@ in debug mode sms not send only add to db table.
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
+Once the extension is installed, simply use it like a mailer in your code by  :
 
 ```php
- <?php Yii::$app->turbosms->send('+380XXXXXXXXX', 'test'); ?>
+ <?php 
+    \Yii::$app->turbosms->compose('test-text', ['data' => $data])
+        ->setTo('+380XXXXXXXXX')
+        ->send();
+ ?>
  ```
 
 ## License
