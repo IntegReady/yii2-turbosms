@@ -96,7 +96,7 @@ class Turbosms extends Component implements ViewContextInterface
             ]);
 
             $message = $this->error = $result->SendSMSResult->ResultArray;
-            $result = ($message == 'Сообщения успешно отправлены');
+            $result = (is_array($message))?($message[0] == 'Сообщения успешно отправлены'):($message == 'Сообщения успешно отправлены');
         } else {
             $result = true;
             $message = 'Сообщения успешно отправлено';
