@@ -29,9 +29,10 @@ class TurboSmsSent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['date_sent'], 'safe'],
-            [['text'], 'string'],
-            [['phone', 'status'], 'string', 'max' => 16]
+            ['date_sent', 'safe'],
+            ['text', 'string'],
+            ['phone', 'string', 'max' => 16],
+            ['status', 'string'],
         ];
     }
 
