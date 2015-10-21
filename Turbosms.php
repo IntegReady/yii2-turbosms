@@ -148,7 +148,7 @@ class Turbosms extends Component implements ViewContextInterface
         $model = new TurboSmsSent();
         $model->text = $text;
         $model->phone = $phone;
-        $model->status = json_encode($message, JSON_PRETTY_PRINT) . ($this->debug ? ' (debug mode)' : '');
+        $model->status = json_encode($message, JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE) . ($this->debug ? ' (debug mode)' : '');
         $model->save();
     }
 
