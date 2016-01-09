@@ -34,6 +34,11 @@ class Turbosms extends Component implements ViewContextInterface
     public $debug = false;
 
     /**
+     * @var bool
+     */
+    public $logToDb = true;
+
+    /**
      * @var SoapClient
      */
     protected $client;
@@ -102,7 +107,9 @@ class Turbosms extends Component implements ViewContextInterface
             $message = 'Сообщения успешно отправлено';
         }
 
-        $this->saveToDb($text, $phone, $message);
+        if ($this->logToDb) {
+            $this->saveToDb($text, $phone, $message);
+        }
         
         return $result;
     }
