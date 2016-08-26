@@ -165,6 +165,9 @@ class Turbosms extends Component implements ViewContextInterface
      * @return int
      */
     public function getBalance() {
+        if (!$this->debug || !$this->client) {
+            $this->connect();
+        }
         $result = $this->client->GetCreditBalance();
         return intval($result->GetCreditBalanceResult);
     }
@@ -175,6 +178,9 @@ class Turbosms extends Component implements ViewContextInterface
      * @return mixed
      */
     public function getMessageStatus($messageId) {
+        if (!$this->debug || !$this->client) {
+            $this->connect();
+        }
         $result = $this->client->GetMessageStatus(['MessageId' => $messageId]);
         return $result->GetMessageStatusResult;
     }
