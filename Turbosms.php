@@ -10,61 +10,40 @@ use stern87\turbosms\models\TurboSmsSent;
 use yii\base\ViewContextInterface;
 use yii\web\View;
 
+/**
+ * Class for TurboSMS
+ *
+ * @property string $login
+ * @property string $password
+ * @property string $sender
+ * @property bool $debug
+ * @property bool $logToDb
+ * @property SoapClient $client
+ * @property string $wsdl
+ * @property string $error
+ * @property \yii\base\View|array $_view view instance or its array configuration
+ * @property string $_viewPath the directory containing view files for composing mail messages
+ * @property string $_message
+ * @property string $_to
+ *
+ * @property float|int balance
+ * @property array messageStatus
+ */
 class Turbosms extends Component implements ViewContextInterface
 {
-
-    /**
-     * @var string
-     */
     public $login;
-
-    /**
-     * @var string
-     */
     public $password;
-
-    /**
-     * @var string
-     */
     public $sender;
-
-    /**
-     * @var bool
-     */
     public $debug = false;
-
-    /**
-     * @var bool
-     */
     public $logToDb = true;
 
-    /**
-     * @var SoapClient
-     */
     protected $client;
-
-    /**
-     * @var string
-     */
     protected $wsdl = 'http://turbosms.in.ua/api/wsdl.html';
 
-    /**
-     * @var string
-     */
     private $error;
-
-    /**
-     * @var \yii\base\View|array view instance or its array configuration.
-     */
     private $_view = [];
-
-    /**
-     * @var string the directory containing view files for composing mail messages.
-     */
     private $_viewPath;
-
     private $_message;
-
     private $_to;
 
     public function compose($view = null, array $params = []) {
@@ -83,7 +62,6 @@ class Turbosms extends Component implements ViewContextInterface
      * Send sms
      *
      * @return boolean
-     * 
      * @throws InvalidConfigException
      */
     public function send() {
@@ -118,8 +96,8 @@ class Turbosms extends Component implements ViewContextInterface
      * @return SoapClient
      * @throws InvalidConfigException
      */
-    protected function connect() {
-
+    protected function connect()
+    {
         if ($this->client) {
             return $this->client;
         }
@@ -147,11 +125,12 @@ class Turbosms extends Component implements ViewContextInterface
     /**
      * Save sms to db
      *
-     * @param $text
-     * @param $phone
-     * @param $message
+     * @param string $text
+     * @param string $phone
+     * @param string $message
      */
-    public function saveToDb($text, $phone, $message) {
+    public function saveToDb($text, $phone, $message)
+    {
         $model = new TurboSmsSent();
         $model->text = $text;
         $model->phone = $phone;
@@ -164,7 +143,8 @@ class Turbosms extends Component implements ViewContextInterface
      *
      * @return int
      */
-    public function getBalance() {
+    public function getBalance()
+    {
         if (!$this->debug || !$this->client) {
             $this->connect();
         }
@@ -177,7 +157,8 @@ class Turbosms extends Component implements ViewContextInterface
      *
      * @return mixed
      */
-    public function getMessageStatus($messageId) {
+    public function getMessageStatus($messageId)
+    {
         if (!$this->debug || !$this->client) {
             $this->connect();
         }
@@ -190,7 +171,8 @@ class Turbosms extends Component implements ViewContextInterface
      *
      * @return string
      */
-    public function getError() {
+    public function getError()
+    {
         return $this->error;
     }
 
@@ -257,6 +239,7 @@ class Turbosms extends Component implements ViewContextInterface
     /**
      * Renders the specified view with optional parameters and layout.
      * The view will be rendered using the [[view]] component.
+     *
      * @param string $view the view name or the path alias of the view file.
      * @param array $params the parameters (name-value pairs) that will be extracted and made available in the view file.
      * @param string|boolean $layout layout view name or path alias. If false, no layout will be applied.
@@ -271,5 +254,4 @@ class Turbosms extends Component implements ViewContextInterface
             return $output;
         }
     }
-
 }
