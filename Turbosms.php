@@ -3,7 +3,7 @@
 namespace integready\turbosms;
 
 use SoapClient;
-use stern87\turbosms\models\TurboSmsSent;
+use integready\turbosms\models\TurboSmsSent;
 use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
