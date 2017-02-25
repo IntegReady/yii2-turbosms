@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist stern87/yii2-turbosms "*"
+php composer.phar require --prefer-dist integready/yii2-turbosms "*"
 ```
 
 or add
 
 ```
-"stern87/yii2-turbosms": "*"
+"integready/yii2-turbosms": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -34,7 +34,7 @@ Add the following in your config:
 ...
     'components' => [
         'turbosms' => [
-            'class' => 'stern87\turbosms\Turbosms',
+            'class' => 'integready\turbosms\Turbosms',
             'viewPath' => '@app/sms',
             'sender' => 'your_sender',
             'login' => 'your_login',
@@ -50,7 +50,7 @@ If you want test sms in debug mode change config:
 ...
     'components' => [
         'turbosms' => [
-            'class' => 'stern87\turbosms\Turbosms',
+            'class' => 'integready\turbosms\Turbosms',
             'viewPath' => '@app/sms',
             'sender' => 'your_sender',
             'login' => 'your_login',
