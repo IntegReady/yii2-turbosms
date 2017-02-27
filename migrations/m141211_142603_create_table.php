@@ -1,10 +1,16 @@
 <?php
 
-use yii\db\Schema;
 use yii\db\Migration;
+use yii\db\Schema;
 
+/**
+ * Class m141211_142603_create_table
+ */
 class m141211_142603_create_table extends Migration
 {
+    /**
+     * @inheritdoc
+     */
     public function up()
     {
         $tableOptions = null;
@@ -14,14 +20,17 @@ class m141211_142603_create_table extends Migration
         }
 
         $this->createTable('{{%turbosms_sent}}', [
-            'id' => Schema::TYPE_PK,
+            'id'        => Schema::TYPE_PK,
             'date_sent' => Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT CURRENT_TIMESTAMP',
-            'text' => Schema::TYPE_TEXT,
-            'phone' => Schema::TYPE_STRING,
-            'status' => Schema::TYPE_STRING,
+            'text'      => Schema::TYPE_TEXT,
+            'phone'     => Schema::TYPE_STRING,
+            'status'    => Schema::TYPE_STRING,
         ], $tableOptions);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function down()
     {
         echo "m141211_142603_create_table cannot be reverted.\n";
