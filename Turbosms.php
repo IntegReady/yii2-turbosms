@@ -43,11 +43,11 @@ class Turbosms extends Component implements ViewContextInterface
     protected $client;
     protected $wsdl = 'http://turbosms.in.ua/api/wsdl.html';
 
-    private $_error;
-    private $_view = [];
-    private $_viewPath;
-    private $_message;
-    private $_to;
+    protected $_error;
+    protected $_view = [];
+    protected $_viewPath;
+    protected $_message;
+    protected $_to;
 
     /**
      * @param string|null $view
